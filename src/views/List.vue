@@ -16,7 +16,7 @@ import store from '@/store'
     store,
     computed: {
       pageList() {
-        return store.state.list
+        return store.state.lists
       }
     }
   }
