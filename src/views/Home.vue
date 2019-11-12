@@ -23,10 +23,10 @@
   @import '../less/css3.less';
 
   .nav{
-    margin:0 auto;background-color: #fff;position: absolute;left:0;bottom:0;
+    margin:0 auto;background-color: #fff;position: absolute;left:0;bottom:0;.tc;
     width:100%;.flex-box;border-top:1px solid #ddd;.box-shadow(0 0 5px rgba(0,0,0,.05));
     >a{
-     .flex-item(1);padding:10px 0;font-size:14px;.rel;
+     .flex-item(1);padding:5px 0;font-size:14px;.rel;
      &:last-child{
        &:after{
          content:'';.abs;width:1px;height:20px;background-color: #ccc;

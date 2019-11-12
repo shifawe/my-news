@@ -12,7 +12,7 @@
           {{item.content}}
         </div>
         <div class="options">
-          <span class="btn-option btn-del" :plain="true" @click='del'>
+          <span class="btn-option btn-del" :plain="true" @click='del(index)'>
             <i class="iconfont icon-qp_icon_close"></i>
           </span>
         </div>
@@ -38,6 +38,38 @@ import store from '@/store'
     computed: {
       pageList() {
         return store.state.lists
+<<<<<<< HEAD
+=======
+      } 
+    },
+    methods: {
+      thisInfo (idx) {     
+        this.$router.push('/info/'+idx);
+        store.commit({
+          type:'userTotal',
+          index: idx
+        })   
+      },
+      del (idx) {
+
+        this.$Modal.confirm({
+            title: '消息',
+            content: '<p>确定删除吗？</p>',
+            onOk: () => {
+              store.commit({
+                type: 'delItem',
+                index: idx
+              })
+
+              this.$Message["success"]({
+                  background: true,
+                  content: '成功删除'
+              })
+            }
+        });
+
+        
+>>>>>>> shifawei
       }
     }
   }

@@ -1,18 +1,23 @@
 <template>
-  <div>
-    <a href="javascript:;" class="btn" @click="add">去添加</a>
+  <div class="user">
+    <Card title="设置" icon="ios-options" :padding="0" shadow>
+      <CellGroup>
+          <Cell title="发布新消息" to="/add" />
+      </CellGroup>
+    </Card>
   </div>
 </template>
 <script>
   export default {
     name: 'User',
     methods:{
-      add () {
-        this.$router.push('/add')
-      }
+      // iview 组件 to 替代
+      // add () {
+      //   this.$router.push('/add')
+      // }
     }
   }
 </script>
 <style scope>
-
+ .user{padding:1rem;}
 </style>

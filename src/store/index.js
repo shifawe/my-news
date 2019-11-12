@@ -20,13 +20,16 @@ export default new Vuex.Store({
   },
   mutations: {
     addItem (state, value) {
-      state.list.push(value)
+      state.lists.push(value)
     },
     saveItem(state, editList){
-      state.list[editList.data.index] = editList.data.item
+      state.lists[editList.data.index] = editList.data.item
     },
     userTotal(state, index){
-      state.list[index.index].user++;
+      state.lists[index.index].user++;
+    },
+    delItem(state, index){
+      state.lists.splice(index.index, 1)
     }
   },
   actions: {
