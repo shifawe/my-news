@@ -38,8 +38,6 @@ import store from '@/store'
     computed: {
       pageList() {
         return store.state.lists
-<<<<<<< HEAD
-=======
       } 
     },
     methods: {
@@ -69,7 +67,6 @@ import store from '@/store'
         });
 
         
->>>>>>> shifawei
       }
     }
   }
