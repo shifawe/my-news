@@ -12,7 +12,7 @@
           {{item.content}}
         </div>
         <div class="options">
-          <span class="btn-option btn-del" :plain="true" @click='del'>
+          <span class="btn-option btn-del" :plain="true" @click='del(index)'>
             <i class="iconfont icon-qp_icon_close"></i>
           </span>
         </div>
@@ -37,7 +37,7 @@ import store from '@/store'
     store,
     computed: {
       pageList() {
-        return store.state.list
+        return store.state.lists
       } 
     },
     methods: {
@@ -48,7 +48,24 @@ import store from '@/store'
           index: idx
         })   
       },
-      del () {
+      del (idx) {
+
+        this.$Modal.confirm({
+            title: '消息',
+            content: '<p>确定删除吗？</p>',
+            onOk: () => {
+              store.commit({
+                type: 'delItem',
+                index: idx
+              })
+
+              this.$Message["success"]({
+                  background: true,
+                  content: '成功删除'
+              })
+            }
+        });
+
         
       }
     }

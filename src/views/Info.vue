@@ -1,11 +1,17 @@
 <template>
   <div class="add-form">
-    <p><input type="text" v-model="title" class="input" placeholder="标题"></p>
     <p>
-      <textarea class="input inp-area" v-model="content" placeholder="内容"></textarea>
+      <Input v-model="title" placeholder="请输入标题"/>
     </p>
-    <p><a href="javascript:;" class="btn" @click="save">保存</a></p>
-    <p><a href="javascript:;" class="btn btn-gray" @click="back">返回</a></p>
+    <p>
+      <Input v-model="content" type="textarea" :rows="4" placeholder="请输入内容..." />
+    </p>
+    <p>
+      <Button type="primary" long @click="save">保存</Button>
+    </p>
+    <p>
+      <Button long @click="back">取消</Button>
+    </p>
   </div>
 </template>
 <script>
@@ -21,8 +27,8 @@ import store from '@/store'
     },
     mounted: function() {
       this.$nextTick(function(){
-        this.title = store.state.list[this.$route.params.id].title
-        this.content = store.state.list[this.$route.params.id].content
+        this.title = store.state.lists[this.$route.params.id].title
+        this.content = store.state.lists[this.$route.params.id].content
       })
     },
     methods: {

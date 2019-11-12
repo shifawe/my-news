@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 
 import ViewUI from 'view-design';
-
 import './less/iview-theme.less'
 
 Vue.use(ViewUI);
