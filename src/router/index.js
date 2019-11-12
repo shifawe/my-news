@@ -36,10 +36,16 @@ const routes = [
     path: '/add',
     name: 'add',
     component: () => import('../views/Add.vue')
+  },
+  {
+    path: '/info/:id',
+    name: 'info',
+    component: () => import('../views/Info.vue')
   }
 ]
 
 const router = new VueRouter({
+  linkActiveClass: 'active',
   routes
 })
 

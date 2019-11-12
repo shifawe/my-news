@@ -8,7 +8,7 @@
     name: 'User',
     methods:{
       add () {
-        this.$router.push('../add')
+        this.$router.push('/add')
       }
     }
   }
