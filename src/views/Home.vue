@@ -2,11 +2,11 @@
   <div class="home">
     <div class="nav">
       <router-link to="/home/list">
-       <i class="iconfont icon-qp_icon_more"></i>
+       <i class="ivu-icon-iconfont icon-qp_icon_more"></i>
        <span>信息列表</span>
       </router-link>
       <router-link to="/home/user">
-       <i class="iconfont icon-qp_icon_actor"></i>
+       <i class="ivu-icon-iconfont icon-qp_icon_actor"></i>
        <span>个人中心</span>
       </router-link>
     </div>
@@ -33,14 +33,14 @@
          left:0;top:50%;margin-top:-10px;
        }
      }
-     .iconfont{
+     .ivu-icon-iconfont{
        font-size: 18px;color:#333
      }
      span{
        display: block;color:#333;font-weight: 600;
      }
      &.active{
-       .iconfont,span{
+       .ivu-icon-iconfont,span{
           color:#42b983;
         }
      }

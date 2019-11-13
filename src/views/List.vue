@@ -13,15 +13,15 @@
         </div>
         <div class="options">
           <span class="btn-option btn-del" :plain="true" @click='del(index)'>
-            <i class="iconfont icon-qp_icon_close"></i>
+            <i class="ivu-icon-iconfont icon-qp_icon_close"></i>
           </span>
         </div>
         <div class="details">
           <span>
-            <i class="iconfont icon-hide gray"></i>{{item.user}}
+            <i class="ivu-icon-iconfont icon-hide gray"></i>{{item.user}}
           </span>
           <span class="btn-edit" @click="thisInfo(index)">
-            <i class="iconfont icon-edit green"></i> 编辑
+            <i class="ivu-icon-iconfont icon-edit green"></i> 编辑
           </span>
         </div>
       </li>
@@ -88,7 +88,7 @@ import store from '@/store'
       .btn-edit{
         margin-left: 20px;color:#42b983;
       }
-      .iconfont{
+      .ivu-icon-iconfont{
         float: left;
       }
       .green{color:#42b983}
@@ -112,12 +112,12 @@ import store from '@/store'
     .btn-option{
       .abs;right:10px;top:8px;.db;
       &.btn-del{
-       .iconfont{
+       .ivu-icon-iconfont{
           color:#ed4014;
         }
       }
     }
-    .iconfont{
+    .ivu-icon-iconfont{
       font-size: 18px;
     }
   }
