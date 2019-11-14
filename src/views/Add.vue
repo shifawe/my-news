@@ -1,19 +1,19 @@
 <template>
   <div class="add-form">
-    <Form ref="formValidate" label-position="top" hide-required-mark :model="formValidate" :rules="ruleValidate">
-      <FormItem prop="title" label="标题:">
-        <Input v-model="formValidate.title" placeholder="请输入标题"/>
-      </FormItem>
-      <FormItem prop="content" label="内容:">
-        <Input type="textarea" :rows="4" v-model="formValidate.content" placeholder="请输入内容..."/>
-      </FormItem>
-      <FormItem>
-        <Button type="primary" long @click="add('formValidate')">发布</Button> 
-      </FormItem>
-      <FormItem>
-        <Button long @click="back">返回</Button>
-      </FormItem>
-    </Form>
+   <p>
+     <span class="label">标题:</span>
+     <Input v-model="title" placeholder="请输入标题"/>
+    </p>
+   <p>
+     <span class="label">内容:</span>
+     <Input v-model="content" type="textarea" :rows="4" placeholder="请输入内容..." />
+    </p>
+   <p>
+     <Button type="primary" long @click="add">发布</Button>
+    </p>
+    <p>
+     <Button long @click="back">返回</Button>
+    </p>
   </div>
 </template>
 <script>
@@ -24,35 +24,19 @@
     store,
     data () {
       return {
-        formValidate:{
-          title:'',
-          content: ''
-        },
-        ruleValidate:{
-            title: [
-              { required: true, message: '请输入标题', trigger: 'blur' }
-            ],
-            content: [
-              { required: true, message: '请输入内容', trigger: 'blur' },
-              { type: 'string', min: 20, message: '内容必须10个字以上！', trigger: 'blur' }
-            ]
-        }
+        title:'',
+        content: ''
       }
     },
     methods: {
-      add (name) {
-        this.$refs[name].validate((valid) => {
-            if (valid) {
-              store.commit('addItem', {
-                title: this.formValidate.title,
-                content: this.formValidate.content,
-                user: '0'
-              })
-               this.$router.push('/home/list')
-            } else {
-                this.$Message.error('新增失败!');
-            }
+      add () {
+        store.commit('addItem', {
+          title: this.title,
+          content: this.content,
+          user: '0'
         })
+
+        this.$router.push('/home/list')
       },
       back () {
         this.$router.go(-1)
@@ -61,7 +45,9 @@
   }
 </script>
 <style scope lang='less'>
-  .ivu-form-item-label{
-    font-size: 14px;font-weight: 700;text-indent: 2px;
+@import '../less/z.less';
+  .label{
+    .tl;.db;padding:5px 0;font-size: 14px;font-weight: 700
   }
+ 
 </style>

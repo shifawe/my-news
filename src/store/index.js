@@ -26,7 +26,7 @@ export default new Vuex.Store({
       state.lists[editList.data.index] = editList.data.item
     },
     userTotal(state, index){
-      state.lists[index.index].user ++
+      state.lists[index.index].user++;
     },
     delItem(state, index){
       state.lists.splice(index.index, 1)
