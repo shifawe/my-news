@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <div class="header"></div>
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  name: 'App',
+}
+</script>
 <style lang="less">
 @import './less/z.less';
 

@@ -5,6 +5,8 @@
           <Cell title="发布新消息" to="/add" />
       </CellGroup>
     </Card>
+    <Divider dashed />
+    <Button @click="out" type="warning" long>退出</Button>
   </div>
 </template>
 <script>
@@ -15,9 +17,12 @@
       // add () {
       //   this.$router.push('/add')
       // }
+      out () {
+        this.$router.push('/')
+      }
     }
   }
 </script>
 <style scope>
- .user{padding:1rem;}
+ .user{padding:1rem;margin-top:42px;}
 </style>

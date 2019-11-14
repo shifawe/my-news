@@ -1,31 +1,37 @@
 <template>
-  <div>
-    <ul class="list">
-      <li
-      v-for="(item, index) in pageList"
-      :key="index"
-      >
-        <div class="title">
-          {{item.title}}
-        </div>
-        <div class="content">
-          {{item.content}}
-        </div>
-        <div class="options">
-          <span class="btn-option btn-del" :plain="true" @click='del(index)'>
-            <i class="iconfont icon-qp_icon_close"></i>
-          </span>
-        </div>
-        <div class="details">
-          <span>
-            <i class="iconfont icon-hide gray"></i>{{item.user}}
-          </span>
-          <span class="btn-edit" @click="thisInfo(index)">
-            <i class="iconfont icon-edit green"></i> 编辑
-          </span>
-        </div>
-      </li>
-    </ul>
+  <div class="list-box">
+    <Scroll :on-reach-bottom="handleReachBottom" :height="height">
+      <ul class="list">
+        <li
+        v-for="(item, index) in pageList"
+        :key="index"
+        >
+          <div class="title">
+            {{item.title}}
+          </div>
+          <div class="content">
+            {{item.content}}
+          </div>
+          <div class="details">
+            <div>
+              <span>
+                <i class="ivu-icon-iconfont icon-hide"></i> {{item.user}}
+              </span>
+            </div>
+            <div class="br-two">
+              <span class="btn-edit" @click="thisInfo(index)">
+                <i class="ivu-icon-iconfont icon-edit"></i> 详情
+              </span>
+            </div>
+            <div>
+              <span class="btn-del" :plain="true" @click='del(index)'>
+                <i class="ivu-icon-iconfont icon-qp_icon_close"></i> 删除
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </Scroll>
   </div>
 </template>
 <script>
@@ -35,10 +41,15 @@ import store from '@/store'
   export default {
     name: 'List',
     store,
+    data () {
+      return {
+        height: document.documentElement.clientHeight - 91
+      }
+    },
     computed: {
       pageList() {
         return store.state.lists
-      } 
+      },
     },
     methods: {
       thisInfo (idx) {     
@@ -51,7 +62,7 @@ import store from '@/store'
       del (idx) {
 
         this.$Modal.confirm({
-            title: '消息',
+            title: '提示',
             content: '<p>确定删除吗？</p>',
             onOk: () => {
               store.commit({
@@ -67,58 +78,58 @@ import store from '@/store'
         });
 
         
+      },
+      handleReachBottom () {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            const last = this.pageList[this.pageList.length - 1];
+            last.title = '这是一条新添加的数据'
+            for (let i = 1; i < 3; i++) {
+              this.pageList.push(last);
+            }
+            resolve();
+        }, 2000);
+        });
       }
     }
   }
 </script>
 <style scope lang="less">
+@import '../less/z.less';
   @import '../less/css3.less';
+  .list-box{
+    .abs;top:32px;bottom:59px;width:100%;left:0;
+  }
   .list{
     .title{
-      font-weight: bold;
+      font-weight: bold;font-size: 16px;
     }
     .content{
       font-size: 14px;padding:7px 0;color:#464646
     }
     .details{
-      .flex-box;margin-top: 5px;
-      >span{
-        font-size: 12px;color:#999;display:block;line-height: 18px;
+      .flex-box;margin-top: 10px;.horizontal;
+      >div{
+        font-size: 12px;color:#999;.flex-item(1);
+        text-align: center;
       }
-      .btn-edit{
-        margin-left: 20px;color:#42b983;
+      .br-two{
+        position: relative;
+        &:after,&:before{
+          content:'';height:10px;margin-top: -5px;width:1px;position: absolute;
+          top:50%;background-color: #ddd;
+        }
+        &:after{right:0}
+        &:before{left:0}
       }
-      .iconfont{
-        float: left;
+      .ivu-icon-iconfont{
+        font-size: 12px;line-height: 0;
       }
-      .green{color:#42b983}
-      .gray{color:#999}
     }
     li{
       list-style:none;background-color: #fff;border-top: 1px solid #ddd;
       padding:13px 25px;text-align: left;
     }
     border-bottom:1px solid #ddd
-  }
-</style>
-<style lang="less">
-  @import '../less/z.less';
-  .list{
-    li{
-      .rel;
-    }
-  }
-  .options{
-    .btn-option{
-      .abs;right:10px;top:8px;.db;
-      &.btn-del{
-       .iconfont{
-          color:#ed4014;
-        }
-      }
-    }
-    .iconfont{
-      font-size: 18px;
-    }
   }
 </style>
