@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Header :title="title"></Header>
     <div class="nav">
       <router-link to="/home/list">
        <i class="ivu-icon-iconfont icon-qp_icon_more"></i>
@@ -14,8 +15,17 @@
   </div>
 </template>
 <script>
+import Header from '@/components/Header'
   export default {
-    name: 'Home'
+    name: 'Home',
+    components:{
+      Header
+    },
+    data () {
+      return {
+        title: '操作中心'
+      }
+    }
   }
 </script>
 <style scope lang='less'>
