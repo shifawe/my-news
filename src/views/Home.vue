@@ -33,7 +33,7 @@ import Header from '@/components/Header'
   @import '../less/css3.less';
 
   .nav{
-    margin:0 auto;background-color: #fff;position: absolute;left:0;bottom:0;.tc;
+    margin:0 auto;background-color: #fff;.fix;left:0;bottom:0;.tc;z-index: 999;
     width:100%;.flex-box;border-top:1px solid #ddd;.box-shadow(0 0 5px rgba(0,0,0,.05));
     >a{
      .flex-item(1);padding:5px 0;font-size:14px;.rel;

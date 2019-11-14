@@ -24,5 +24,5 @@
   }
 </script>
 <style scope>
- .user{padding:1rem;}
+ .user{padding:1rem;margin-top:42px;}
 </style>

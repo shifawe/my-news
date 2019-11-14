@@ -1,35 +1,37 @@
 <template>
-  <div>
-    <ul class="list">
-      <li
-      v-for="(item, index) in pageList"
-      :key="index"
-      >
-        <div class="title">
-          {{item.title}}
-        </div>
-        <div class="content">
-          {{item.content}}
-        </div>
-        <div class="details">
-          <div>
-            <span>
-              <i class="ivu-icon-iconfont icon-hide"></i> {{item.user}}
-            </span>
+  <div class="list-box">
+    <Scroll :on-reach-bottom="handleReachBottom" :height="height">
+      <ul class="list">
+        <li
+        v-for="(item, index) in pageList"
+        :key="index"
+        >
+          <div class="title">
+            {{item.title}}
           </div>
-          <div class="br-two">
-            <span class="btn-edit" @click="thisInfo(index)">
-              <i class="ivu-icon-iconfont icon-edit"></i> 详情
-            </span>
+          <div class="content">
+            {{item.content}}
           </div>
-          <div>
-            <span class="btn-del" :plain="true" @click='del(index)'>
-              <i class="ivu-icon-iconfont icon-qp_icon_close"></i> 删除
-            </span>
+          <div class="details">
+            <div>
+              <span>
+                <i class="ivu-icon-iconfont icon-hide"></i> {{item.user}}
+              </span>
+            </div>
+            <div class="br-two">
+              <span class="btn-edit" @click="thisInfo(index)">
+                <i class="ivu-icon-iconfont icon-edit"></i> 详情
+              </span>
+            </div>
+            <div>
+              <span class="btn-del" :plain="true" @click='del(index)'>
+                <i class="ivu-icon-iconfont icon-qp_icon_close"></i> 删除
+              </span>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </Scroll>
   </div>
 </template>
 <script>
@@ -39,10 +41,15 @@ import store from '@/store'
   export default {
     name: 'List',
     store,
+    data () {
+      return {
+        height: document.documentElement.clientHeight - 91
+      }
+    },
     computed: {
       pageList() {
         return store.state.lists
-      } 
+      },
     },
     methods: {
       thisInfo (idx) {     
@@ -71,12 +78,28 @@ import store from '@/store'
         });
 
         
+      },
+      handleReachBottom () {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            const last = this.pageList[this.pageList.length - 1];
+            last.title = '这是一条新添加的数据'
+            for (let i = 1; i < 3; i++) {
+              this.pageList.push(last);
+            }
+            resolve();
+        }, 2000);
+        });
       }
     }
   }
 </script>
 <style scope lang="less">
+@import '../less/z.less';
   @import '../less/css3.less';
+  .list-box{
+    .abs;top:32px;bottom:59px;width:100%;left:0;
+  }
   .list{
     .title{
       font-weight: bold;font-size: 16px;

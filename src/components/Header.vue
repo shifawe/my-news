@@ -41,10 +41,10 @@
   @import '../less/z.less';
   @import '../less/css3.less';
   .header-box{
-    .rel;z-index: 99;
+    .fix;z-index: 99;width:100%;left: 0;top:0;
   }
   .header{
-    .flex-box;.just-content;color:#fff;.txt-ver(3em);
+    .flex-box;.just-content;color:#fff;.txt-ver(42px);
     .title{
       .ellipsis-basic;font-size: 14px;font-weight: bold;
     }
