@@ -1,4 +1,4 @@
-# my-vuex
+# vuex 和 vue-router 一些基本运用
 
 ## Project setup
 ```
