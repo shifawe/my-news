@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import Reg from '../views/Reg.vue'
+import Help from'../views/Help.vue'
 
 Vue.use(VueRouter)
 
@@ -10,12 +11,14 @@ const routes = [
   {
     path: '/',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: { title: '首页'}
   },
   {
     path: '/reg',
     name: 'reg',
-    component: Reg
+    component: Reg,
+    meta: { title: '注册'}
   },
   {
     path: '/home',
@@ -51,6 +54,12 @@ const routes = [
     name: 'info',
     component: () => import('../views/Info.vue'),
     meta: { title: '详情编辑' }
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: Help,
+    meta: { title: '反馈与帮助' }
   }
 ]
 

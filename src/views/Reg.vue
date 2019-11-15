@@ -1,17 +1,20 @@
 <template>
   <div class="login">
       <Form ref="formCustom" :model="formCustom" :rules="ruleCustom">
+        <FormItem>
+          <span class="title">账号注册</span>
+        </FormItem>
         <FormItem prop="name">
-          <Input v-model="formCustom.name" placeholder="用户名"/>
+          <Input v-model="formCustom.name" placeholder="用户名" prefix="iconfont icon-qp_icon_actor"/>
         </FormItem>
         <FormItem prop="password">
-          <Input v-model="formCustom.password" placeholder="密码"/>
+          <Input v-model="formCustom.password" placeholder="密码" prefix="iconfont icon-password"/>
         </FormItem>
         <FormItem prop="repeatword">
-          <Input v-model="formCustom.repeatword" placeholder="确认密码"/>
+          <Input v-model="formCustom.repeatword" placeholder="确认密码" prefix="iconfont icon-password"/>
         </FormItem>
         <FormItem>
-          <Button type="info" long @click="handleSubmit('formCustom')">注册</Button>
+          <Button type="success" long @click="handleSubmit('formCustom')">注册</Button>
         </FormItem>
       </Form>
       <div class="footer">
