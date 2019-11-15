@@ -1,5 +1,11 @@
 <template>
-  <div class="add-form">
+<div>
+   <Header :title="title">
+     <span slot="left" @click="back">
+      <Icon type="ios-arrow-back" />
+    </span>
+   </Header>
+   <div class="add-form">
     <Form ref="formValidate" label-position="top" hide-required-mark :model="formValidate" :rules="ruleValidate">
       <FormItem prop="title" label="标题:">
         <Input v-model="formValidate.title" placeholder="请输入标题"/>
@@ -13,19 +19,22 @@
       <FormItem>
         <Button type="primary" long @click="save('formValidate')">保存</Button> 
       </FormItem>
-      <FormItem>
-        <Button long @click="back">取消</Button>
-      </FormItem>
     </Form>
   </div>
+</div>
+  
 </template>
 <script>
 import store from '@/store'
+import Header from '@/components/Header'
+
   export default {
     name: 'Info',
+    components: { Header},
     store,
     data () {
       return {
+        title: '详情编辑',
         formValidate:{
           title:'',
           content: '',

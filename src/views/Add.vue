@@ -1,4 +1,10 @@
 <template>
+<div>
+  <Header :title="title" :type="skin">
+    <span slot="left" @click="back">
+      <Icon type="ios-arrow-back" />
+    </span>
+  </Header>
   <div class="add-form">
     <Form ref="formValidate" label-position="top" hide-required-mark :model="formValidate" :rules="ruleValidate">
       <FormItem prop="title" label="标题:">
@@ -8,22 +14,24 @@
         <Input type="textarea" :rows="4" v-model="formValidate.content" placeholder="请输入内容..."/>
       </FormItem>
       <FormItem>
-        <Button type="primary" long @click="add('formValidate')">发布</Button> 
-      </FormItem>
-      <FormItem>
-        <Button long @click="back">返回</Button>
+        <Button type="info" long @click="add('formValidate')">发布</Button> 
       </FormItem>
     </Form>
   </div>
+</div>
 </template>
 <script>
   import store from '@/store'
+  import Header from '@/components/Header'
 
   export default {
     name: 'Add',
+    components: { Header },
     store,
     data () {
       return {
+        title:'添加新闻',
+        skin: 'blue',
         formValidate:{
           title:'',
           content: ''
@@ -50,7 +58,10 @@
               })
                this.$router.push('/home/list')
             } else {
-                this.$Message.error('新增失败!');
+              this.$Message['error']({
+                background: true,
+                content: '发布失败!'
+              });
             }
         })
       },
