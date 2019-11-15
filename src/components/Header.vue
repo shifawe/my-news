@@ -20,7 +20,7 @@
       title: {
         type: String,
         default: () => {
-          return '主页'
+          return '你好！2020'
         }
       },
       type: {
@@ -44,9 +44,9 @@
     .fix;z-index: 99;width:100%;left: 0;top:0;
   }
   .header{
-    .flex-box;.just-content;color:#fff;.txt-ver(42px);
+    .flex-box;color:#fff;.txt-ver(42px);
     .title{
-      .ellipsis-basic;font-size: 14px;font-weight: bold;
+      .ellipsis-basic;font-size: 14px;font-weight: bold;.tc;.flex-item(1);
     }
     &.default{
       background-color: #19be6b;border-bottom:1px solid #12a75c; .box-shadow;
@@ -54,8 +54,13 @@
     &.blue{
       background-color: #2db7f5;border-bottom:1px solid #239fd8; .box-shadow;
     }
+    &.orange{
+      background-color: #f90;border-bottom:1px solid rgb(233, 140, 0); .box-shadow;
+    }
+    .right,.left{.wh(42px);.tc;}
+    .right{.fr}
     .left{
-      .ivu-icon{font-size: 18px}
+      .ivu-icon{font-size: 18px};.fl;
     }
   }
 </style>

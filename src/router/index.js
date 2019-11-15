@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import Reg from '../views/Reg.vue'
+import Help from'../views/Help.vue'
 
 Vue.use(VueRouter)
 
@@ -10,12 +11,14 @@ const routes = [
   {
     path: '/',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: { title: '首页'}
   },
   {
     path: '/reg',
     name: 'reg',
-    component: Reg
+    component: Reg,
+    meta: { title: '注册'}
   },
   {
     path: '/home',
@@ -25,12 +28,14 @@ const routes = [
       {
         path: 'list',
         name: 'list',
-        component: () => import('../views/List.vue')
+        component: () => import('../views/List.vue'),
+        meta: { title: '列表展示' }
       },
       {
         path: 'user',
         name: 'user',
-        component: () => import('../views/User.vue')
+        component: () => import('../views/User.vue'),
+        meta: { title: '用户中心' }
       }  
     ]
     // route level code-splitting
@@ -41,12 +46,20 @@ const routes = [
   {
     path: '/add',
     name: 'add',
-    component: () => import('../views/Add.vue')
+    component: () => import('../views/Add.vue'),
+    meta: { title: '发布消息' }
   },
   {
     path: '/info/:id',
     name: 'info',
-    component: () => import('../views/Info.vue')
+    component: () => import('../views/Info.vue'),
+    meta: { title: '详情编辑' }
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: Help,
+    meta: { title: '反馈与帮助' }
   }
 ]
 

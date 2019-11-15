@@ -1,6 +1,9 @@
 <template>
   <div class="login">
     <Form ref="formValidate" :model="formValidate" :rules="ruleValidate">
+      <FormItem>
+        <span class="title">密码登录</span>
+      </FormItem>
       <FormItem prop="name">
         <Input v-model="formValidate.name" placeholder="用户名" prefix="iconfont icon-qp_icon_actor"/>
       </FormItem>
@@ -12,7 +15,7 @@
       </FormItem>
     </Form>
     <div class="footer">
-      <span long @click="reg" class="link-blue">没账号去注册 > </span>
+      <span long @click="reg" class="link-green">没账号去注册 > </span>
     </div>
   </div>
 </template>
@@ -101,8 +104,8 @@
 <style lang='less'>
   .login{
     margin:0 auto;padding:2rem;
-    .footer{text-align: center}
+    .title{font-size: 16px;font-weight: bold;padding-left: 3px}
+    .footer{padding-left: 3px}
     .link-green{color:#19be6b;font-size: 12px}
-    .link-blue{color:#2d8cf0;font-size: 12px}
   }
 </style>

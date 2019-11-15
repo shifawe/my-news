@@ -1,6 +1,8 @@
 <template>
+<div>
+  <Header :title="title"></Header>
   <div class="list-box">
-    <Scroll :on-reach-bottom="handleReachBottom" :height="height">
+    <Scroll :on-reach-edge="handleReachEdge" :height="height">
       <ul class="list">
         <li
         v-for="(item, index) in pageList"
@@ -33,17 +35,23 @@
       </ul>
     </Scroll>
   </div>
+</div>
+  
 </template>
 <script>
 
-import store from '@/store'
+  import store from '@/store'
+  import Header from '@/components/Header'
 
+  let total = 1;
   export default {
     name: 'List',
+    components: { Header },
     store,
     data () {
       return {
-        height: document.documentElement.clientHeight - 91
+        title: '新闻列表',
+        height: document.documentElement.clientHeight - 101
       }
     },
     computed: {
@@ -62,43 +70,52 @@ import store from '@/store'
       del (idx) {
 
         this.$Modal.confirm({
-            title: '提示',
-            content: '<p>确定删除吗？</p>',
-            onOk: () => {
-              store.commit({
-                type: 'delItem',
-                index: idx
-              })
+          title: '提示',
+          content: '<p>确定删除吗？</p>',
+          onOk: () => {
+            store.commit({
+              type: 'delItem',
+              index: idx
+            })
 
-              this.$Message["success"]({
-                  background: true,
-                  content: '成功删除'
-              })
-            }
+            this.$Message["success"]({
+                background: true,
+                content: '成功删除'
+            })
+          }
         });
-
         
       },
-      handleReachBottom () {
+      handleReachEdge (dir) {
         return new Promise(resolve => {
           setTimeout(() => {
-            const last = this.pageList[this.pageList.length - 1];
-            last.title = '这是一条新添加的数据'
-            for (let i = 1; i < 3; i++) {
-              this.pageList.push(last);
+            if(dir > 0){
+              const first = this.pageList[0];
+              first.title = '顶部新数据' + total++
+              for (let i = 1; i < 3; i++) {
+                  this.pageList.unshift(first);
+              }
             }
-            resolve();
-        }, 2000);
-        });
+            else{
+              const last = this.pageList[this.pageList.length - 1]
+              last.title = '下拉新数据' + total++
+              for (let i = 1; i < 3; i++) {
+                this.pageList.push(last)
+              }
+            }
+            
+            resolve()
+        }, 2000)
+        })
       }
     }
   }
 </script>
 <style scope lang="less">
-@import '../less/z.less';
+  @import '../less/z.less';
   @import '../less/css3.less';
   .list-box{
-    .abs;top:32px;bottom:59px;width:100%;left:0;
+    .abs;top:42px;bottom:59px;width:100%;left:0;
   }
   .list{
     .title{

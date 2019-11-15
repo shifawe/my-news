@@ -19,7 +19,7 @@ export default {
 }
 
 .add-form{
-  padding:2em 2em 0;
+  padding:62px 2em 0;
   p{
     padding:10px 0;
   }
